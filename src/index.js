@@ -59,9 +59,51 @@ function processData(data) {
 const btn = document.querySelector("button");
 btn.addEventListener("click", getWeather);
 
+function getDaySuffix(day) {
+  if (day > 3 && day < 21) {
+    return "th";
+  }
+  switch (day % 10) {
+    case 1:
+      return "st";
+    case 2:
+      return "nd";
+    case 3:
+      return "rd";
+    default:
+      return "th";
+  }
+}
+
+function formatDate(isoString) {
+  const date = new Date(isoString);
+  const day = date.getDate();
+  const suffix = getDaySuffix(day);
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const month = months[date.getMonth()];
+  return `${day}${suffix} ${month}`;
+}
+
 function displayWeather() {
+  if (!processedData) return;
   const dates = document.querySelectorAll(".date");
-  dates.forEach((date, i) => (date.textContent = processedData.dates[i].datetime));
+  dates.forEach((date, i) => {
+    const rawDate = processedData.dates[i].datetime;
+    date.textContent = formatDate(rawDate);
+  });
 }
 
 displayWeather();
