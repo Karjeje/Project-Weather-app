@@ -9,9 +9,26 @@ async function getWeather(location) {
     );
     const data = await response.json();
     console.log(data);
+    return processData(data);
   } catch (err) {
     console.error("fukem");
   }
 }
 
-getWeather("london");
+function processData(data) {
+  return {
+    location: data.address,
+    date: data.days[0].datetime,
+    description: data.currentConditions.conditions,
+    temperature: data.currentConditions.temp,
+    feelslike: data.currentConditions.feelslike,
+    humidity: data.currentConditions.humidity,
+    sunrise: data.currentConditions.sunrise,
+    sunset: data.currentConditions.sunset,
+    windspeed: data.currentConditions.windspeed,
+  };
+}
+
+getWeather("london").then((weather) => {
+  console.log(weather);
+});
