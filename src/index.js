@@ -3,15 +3,25 @@ import "./styles.css";
 console.log("Template");
 
 async function getWeather(location) {
+  event.preventDefault();
+  const locationInput = document.getElementById("location");
+  location = locationInput.value;
+
   try {
     const response = await fetch(
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=3Q2HL7K9M833AEEYCPBTU7NPX`
     );
+
+    if (!response.ok) {
+      throw new Error(`API returned status: ${response.status}`);
+    }
+
     const data = await response.json();
+
     console.log(data);
-    return processData(data);
+    console.log(processData(data));
   } catch (err) {
-    console.error("fukem");
+    console.error("Something went wrong:", err);
   }
 }
 
@@ -29,6 +39,5 @@ function processData(data) {
   };
 }
 
-getWeather("london").then((weather) => {
-  console.log(weather);
-});
+const btn = document.querySelector("button");
+btn.addEventListener("click", getWeather);
