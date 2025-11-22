@@ -17,7 +17,7 @@ h2 {
   margin-top: 20px;
 }
 
-div {
+#form {
   background-color: beige;
   padding: 20px 10px;
   display: flex;
@@ -29,4 +29,26 @@ div {
 button {
   width: 30%;
   align-self: center;
+}
+
+#weathercontainer {
+  background-color: red;
+  width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.days {
+  background-color: azure;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+.days > div {
+  display: flex;
+  flex-direction: column;
+  background-color: antiquewhite;
+  padding: 10px;
 }
