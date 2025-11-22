@@ -2,10 +2,9 @@ import "./styles.css";
 
 console.log("Template");
 
-async function getWeather(location) {
-  event.preventDefault();
+async function getWeather() {
   const locationInput = document.getElementById("location");
-  location = locationInput.value;
+  const location = locationInput.value;
 
   try {
     const response = await fetch(
