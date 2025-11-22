@@ -2,6 +2,8 @@ import "./styles.css";
 
 console.log("Template");
 
+let processedData = null;
+
 async function getWeather() {
   const locationInput = document.getElementById("location");
   const location = locationInput.value || "ljubljana";
@@ -24,16 +26,18 @@ async function getWeather() {
 
     console.log("Fetched and stored:", data);
     console.log("Fetched and stored:", processed);
+
+    displayWeather();
   } catch (err) {
     console.error("Something went wrong:", err);
   }
 }
 
 const savedUnproccesed = localStorage.getItem("unprocessedData");
-const savedProcessed = localStorage.getItem("weatherData");
+const savedProcessed = localStorage.getItem("processedData");
 if (savedProcessed && savedUnproccesed) {
   const unprocessedData = JSON.parse(savedUnproccesed);
-  const processedData = JSON.parse(savedProcessed);
+  processedData = JSON.parse(savedProcessed);
   console.log("Loaded from storage:", unprocessedData);
   console.log("Loaded from storage:", processedData);
 }
@@ -41,7 +45,7 @@ if (savedProcessed && savedUnproccesed) {
 function processData(data) {
   return {
     location: data.address,
-    dates: data.days[0].datetime,
+    dates: data.days,
     description: data.currentConditions.conditions,
     temperature: data.currentConditions.temp,
     feelslike: data.currentConditions.feelslike,
@@ -54,3 +58,10 @@ function processData(data) {
 
 const btn = document.querySelector("button");
 btn.addEventListener("click", getWeather);
+
+function displayWeather() {
+  const dates = document.querySelectorAll(".date");
+  dates.forEach((date, i) => (date.textContent = processedData.dates[i].datetime));
+}
+
+displayWeather();
