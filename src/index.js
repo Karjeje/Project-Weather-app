@@ -97,13 +97,34 @@ function formatDate(isoString) {
   return `${day}${suffix} ${month}`;
 }
 
+function getDayName(isoString) {
+  const date = new Date(isoString);
+  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const day = days[date.getDay()];
+  return day;
+}
+
 function displayWeather() {
   if (!processedData) return;
-  const dates = document.querySelectorAll(".date");
-  dates.forEach((date, i) => {
-    const rawDate = processedData.dates[i].datetime;
-    date.textContent = formatDate(rawDate);
-  });
+
+  function displayDates() {
+    const dates = document.querySelectorAll(".date");
+    dates.forEach((date, i) => {
+      const rawDate = processedData.dates[i].datetime;
+      date.textContent = formatDate(rawDate);
+    });
+  }
+  displayDates();
+
+  function displayDays() {
+    const allDays = document.querySelectorAll(".day");
+    const lastThree = Array.from(allDays).splice(-3);
+    lastThree.forEach((day, i) => {
+      const rawDate = processedData.dates[i + 2].datetime;
+      day.textContent = getDayName(rawDate);
+    });
+  }
+  displayDays();
 }
 
 displayWeather();
