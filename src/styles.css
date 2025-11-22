@@ -20,4 +20,13 @@ h2 {
 form {
   background-color: beige;
   padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 400px;
+}
+
+button {
+  width: 30%;
+  align-self: center;
 }
