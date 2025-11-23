@@ -104,6 +104,11 @@ function getDayName(isoString) {
   return day;
 }
 
+function capitalize(city) {
+  if (!city) return;
+  return city[0].toUpperCase() + city.slice(1).toLowerCase();
+}
+
 function displayWeather() {
   if (!processedData) return;
 
@@ -125,6 +130,14 @@ function displayWeather() {
     });
   }
   displayDays();
+
+  function displayBasic() {
+    const tempSpan = document.querySelector(".currenttemp");
+    const locationSpan = document.querySelector(".location");
+    tempSpan.textContent = `${processedData.temperature} ºC`;
+    locationSpan.textContent = capitalize(processedData.location);
+  }
+  displayBasic();
 }
 
 displayWeather();
