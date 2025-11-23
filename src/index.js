@@ -109,6 +109,21 @@ function capitalize(city) {
   return city[0].toUpperCase() + city.slice(1).toLowerCase();
 }
 
+function shortenHour(hour) {
+  if (!hour) return;
+  return hour.slice(0, 5);
+}
+
+const container = document.getElementById("hourlyContainer");
+
+document.querySelector(".arrow.right").addEventListener("click", () => {
+  container.scrollBy({ left: 400, behavior: "smooth" });
+});
+
+document.querySelector(".arrow.left").addEventListener("click", () => {
+  container.scrollBy({ left: -400, behavior: "smooth" });
+});
+
 function displayWeather() {
   if (!processedData) return;
 
@@ -154,6 +169,24 @@ function displayWeather() {
     humiditySpan.textContent = `${processedData.humidity} %`;
   }
   displayLeftMain();
+
+  function createHourlyTable(hours) {
+    const container = document.getElementById("hourlyContainer");
+    container.innerHTML = "";
+
+    hours.forEach((h) => {
+      const box = document.createElement("div");
+      box.classList = "hour-box";
+
+      box.innerHTML = `
+      <span class="hour">${shortenHour(h.datetime)}</span>
+      <span class="temp">${h.temp} ºC</span>
+      <span class="wind">${h.windspeed} km/h</span>
+      `;
+      container.appendChild(box);
+    });
+  }
+  createHourlyTable(processedData.dates[0].hours);
 }
 
 displayWeather();
