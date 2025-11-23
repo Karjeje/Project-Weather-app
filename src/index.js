@@ -145,13 +145,13 @@ function displayWeather() {
     const temps = document.querySelectorAll(".currenttemp");
     const secondTemp = temps[1];
     const windSpeed = document.querySelector(".windspeed");
-    const humidity = document.querySelector(".humidity");
+    const humiditySpan = document.querySelector(".humidityspan");
 
     cityTime.textContent = `${capitalize(processedData.location)}, add time`;
     desc.textContent = processedData.description;
-    secondTemp.textContent = `${processedData.temperature} ºC`;
+    secondTemp.textContent = processedData.temperature;
     windSpeed.textContent = `${processedData.windspeed} km/h`;
-    humidity.textContent = `${processedData.humidity} %`;
+    humiditySpan.textContent = `${processedData.humidity} %`;
   }
   displayLeftMain();
 }
