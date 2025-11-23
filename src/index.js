@@ -138,6 +138,22 @@ function displayWeather() {
     locationSpan.textContent = capitalize(processedData.location);
   }
   displayBasic();
+
+  function displayLeftMain() {
+    const cityTime = document.querySelector(".citytime");
+    const desc = document.querySelector(".desc");
+    const temps = document.querySelectorAll(".currenttemp");
+    const secondTemp = temps[1];
+    const windSpeed = document.querySelector(".windspeed");
+    const humidity = document.querySelector(".humidity");
+
+    cityTime.textContent = `${capitalize(processedData.location)}, add time`;
+    desc.textContent = processedData.description;
+    secondTemp.textContent = `${processedData.temperature} ºC`;
+    windSpeed.textContent = `${processedData.windspeed} km/h`;
+    humidity.textContent = `${processedData.humidity} %`;
+  }
+  displayLeftMain();
 }
 
 displayWeather();
