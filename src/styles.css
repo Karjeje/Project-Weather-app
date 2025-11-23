@@ -35,8 +35,10 @@ button {
   background-color: red;
   width: 800px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding: 20px;
 }
 
 .days {
@@ -51,4 +53,10 @@ button {
   flex-direction: column;
   background-color: antiquewhite;
   padding: 10px;
+}
+
+.basicinfo {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: antiquewhite;
 }
