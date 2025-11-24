@@ -5,87 +5,119 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 20px;
+  color: #333;
 }
 
 h2 {
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 #form {
-  background-color: beige;
-  padding: 20px 10px;
+  background: #fff;
+  padding: 20px;
+  width: 800px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 400px;
+  gap: 12px;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
 button {
-  width: 30%;
-  align-self: center;
+  padding: 8px 12px;
+  background: #4e4e4e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #333;
 }
 
 #weathercontainer {
-  background-color: red;
-  width: 1000px;
+  margin-top: 25px;
+  background: #fff;
+  width: 1200px;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 20px;
+  gap: 20px;
+}
+
+.basicinfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.2rem;
 }
 
 .days {
-  background-color: azure;
   display: flex;
   gap: 10px;
 }
 
 .days > div {
-  display: flex;
-  flex-direction: column;
-  background-color: antiquewhite;
-  padding: 10px;
+  background: #f9f9f9;
+  padding: 12px;
+  border-radius: 10px;
+  width: 200px;
+}
+
+.days > div:first-child {
+  background-color: darkgray;
 }
 
 .days > div > div {
   display: flex;
-}
-
-.basicinfo {
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: antiquewhite;
+  gap: 10px;
 }
 
 .maindata {
   display: grid;
-  grid-template-columns: 2fr 3fr;
-  gap: 10px;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+.leftmain,
+.rightmain {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
 }
 
 .leftmain {
-  background-color: antiquewhite;
   display: flex;
   flex-direction: column;
 }
 
+.leftmain > div {
+  margin-top: 10px;
+}
+
 .rightmain {
-  background-color: antiquewhite;
   overflow: hidden;
 }
 
 .hourly-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
-  width: 100%;
+  gap: 12px;
 }
 
 .table-wrapper {
@@ -94,48 +126,46 @@ button {
 }
 
 .row-labels {
-  min-width: 80px;
-  border: 1px solid #ccc;
-  padding: 8px;
-  margin-right: 5px;
+  width: 90px;
+  background: #ececec;
+  padding: 10px;
+  border-radius: 10px;
   text-align: center;
-  border-radius: 8px;
-  background: #f3f3f3;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  margin-right: 4px;
 }
 
 .arrow {
-  background: none;
+  font-size: 26px;
+  color: black;
+  background: #eee;
+  padding: 8px;
   border: none;
-  font-size: 24px;
+  border-radius: 6px;
   cursor: pointer;
-  padding: 5px 10px;
+}
+
+.arrow:hover {
+  background: #ddd;
 }
 
 .hourly-container {
   display: flex;
   overflow: hidden;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE */
-  flex: 1;
-}
-
-.hourly-container::-webkit-scrollbar {
-  display: none;
+  gap: 3px;
 }
 
 .hour-box {
-  min-width: 80px;
-  border: 1px solid #ccc;
-  padding: 8px;
-  margin-right: 5px;
-  text-align: center;
-  border-radius: 8px;
-  background: #f3f3f3;
+  min-width: 90px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
+  text-align: center;
   gap: 4px;
 }
 
@@ -143,11 +173,10 @@ button {
   font-weight: bold;
 }
 
-.temp {
-  color: #e65c00;
+.wind {
+  font-size: 0.9rem;
 }
 
-.wind {
-  color: #0077cc;
-  font-size: 0.9rem;
+.suninfo {
+  margin-bottom: 14px;
 }
