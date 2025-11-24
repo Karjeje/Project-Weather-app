@@ -49,7 +49,7 @@ function processData(data) {
     dates: data.days,
     currenttime: getLocalTime(data.timezone),
     description: data.currentConditions.conditions,
-    temperature: data.currentConditions.temp,
+    temperature: Math.round(toCelsius(data.currentConditions.temp)),
     feelslike: data.currentConditions.feelslike,
     humidity: data.currentConditions.humidity,
     sunrise: data.currentConditions.sunrise,
@@ -62,6 +62,10 @@ const btn = document.querySelector("button");
 btn.addEventListener("click", getWeather);
 
 //Helper functions
+
+function toCelsius(f) {
+  return ((f - 32) * 5) / 9;
+}
 
 function getDaySuffix(day) {
   if (day > 3 && day < 21) {
@@ -203,7 +207,7 @@ function displayWeather() {
       box.innerHTML = `
       <span class="hour">${shortenHour(h.datetime)}</span>
       <span class="weathericon">Icon</span>
-      <span class="temp">${h.temp} ºC</span>
+      <span class="temp">${Math.round(toCelsius(h.temp))} ºC</span>
       <span class="wind">${h.windspeed} km/h</span>
       `;
       container.appendChild(box);
@@ -220,8 +224,8 @@ function displayWeather() {
     const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     dayAndDateSpan.textContent = `${days[currentDate.getDay()]}, ${currentDate.getDate()}/${currentDate.getMonth() + 1}`;
 
-    sunriseSpan.textContent = `↑🌅${shortenHour(processedData.sunrise)}`;
-    sunsetSpan.textContent = `↓🌅${shortenHour(processedData.sunset)}`;
+    sunriseSpan.textContent = `↑🌅 ${shortenHour(processedData.sunrise)}`;
+    sunsetSpan.textContent = `↓🌅 ${shortenHour(processedData.sunset)}`;
   }
   displaySunInfo();
 }
