@@ -148,6 +148,10 @@ function displayWeather() {
   function displayDays() {
     const allDays = document.querySelectorAll(".day");
     const lastThree = Array.from(allDays).splice(-3);
+    const dailyIcons = document.querySelectorAll(".dayicon");
+    dailyIcons.forEach((icon) => {
+      icon.textContent = "Icon";
+    });
     lastThree.forEach((day, i) => {
       const rawDate = processedData.dates[i + 2].datetime;
       day.textContent = getDayName(rawDate);
@@ -156,8 +160,10 @@ function displayWeather() {
   displayDays();
 
   function displayBasic() {
+    const iconSpanBasic = document.querySelector(".currenticon.basic");
     const tempSpan = document.querySelector(".currenttemp");
     const locationSpan = document.querySelector(".location");
+    iconSpanBasic.textContent = "Icon";
     tempSpan.textContent = `${processedData.temperature} ºC`;
     locationSpan.textContent = capitalize(processedData.location);
   }
@@ -168,12 +174,14 @@ function displayWeather() {
     const desc = document.querySelector(".desc");
     const temps = document.querySelectorAll(".currenttemp");
     const secondTemp = temps[1];
+    const iconSpanMain = document.querySelector(".currenticon.main");
     const windSpeed = document.querySelector(".windspeed");
     const humiditySpan = document.querySelector(".humidityspan");
 
     cityTime.textContent = `${capitalize(processedData.location)}, ${processedData.currenttime}`;
     desc.textContent = processedData.description;
     secondTemp.textContent = processedData.temperature;
+    iconSpanMain.textContent = "Icon";
     windSpeed.textContent = `${processedData.windspeed} km/h`;
     humiditySpan.textContent = `${processedData.humidity} %`;
   }
@@ -189,6 +197,7 @@ function displayWeather() {
 
       box.innerHTML = `
       <span class="hour">${shortenHour(h.datetime)}</span>
+      <span class="weathericon">Icon</span>
       <span class="temp">${h.temp} ºC</span>
       <span class="wind">${h.windspeed} km/h</span>
       `;

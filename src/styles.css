@@ -54,6 +54,10 @@ button {
   padding: 10px;
 }
 
+.days > div > div {
+  display: flex;
+}
+
 .basicinfo {
   padding: 10px;
   margin-bottom: 10px;
