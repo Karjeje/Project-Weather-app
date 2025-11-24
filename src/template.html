@@ -41,7 +41,7 @@
         </div>
       </div>
       <div class="maindata">
-        <div class="left">
+        <div class="leftmain">
           <span class="citytime"></span>
           <span class="desc"></span>
           <div>
@@ -58,7 +58,7 @@
             <span class="humidityspan"></span>
           </div>
         </div>
-        <div class="right">
+        <div class="rightmain">
           <div>
             <span class="dayanddate"></span>
             <span class="sunrise">↑</span>
@@ -66,7 +66,14 @@
           </div>
           <div class="hourly-wrapper">
             <button class="left arrow">&#9664;</button>
-            <div class="hourly-container" id="hourlyContainer"></div>
+            <div class="table-wrapper">
+              <div class="row-labels">
+                <div class="label">Hour</div>
+                <div class="label">Temperature</div>
+                <div class="label">Wind speed</div>
+              </div>
+              <div class="hourly-container" id="hourlyContainer"></div>
+            </div>
             <button class="right arrow">&#9654;</button>
           </div>
         </div>
