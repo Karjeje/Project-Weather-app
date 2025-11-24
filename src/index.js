@@ -60,6 +60,8 @@ function processData(data) {
 const btn = document.querySelector("button");
 btn.addEventListener("click", getWeather);
 
+//Helper functions
+
 function getDaySuffix(day) {
   if (day > 3 && day < 21) {
     return "th";
@@ -133,6 +135,8 @@ document.querySelector(".arrow.left").addEventListener("click", () => {
   container.scrollBy({ left: -340, behavior: "smooth" });
 });
 
+//Function for displaying the weather
+
 function displayWeather() {
   if (!processedData) return;
 
@@ -205,6 +209,20 @@ function displayWeather() {
     });
   }
   createHourlyTable(processedData.dates[0].hours);
+
+  function displaySunInfo() {
+    const dayAndDateSpan = document.querySelector(".dayanddate");
+    const sunriseSpan = document.querySelector(".sunrise");
+    const sunsetSpan = document.querySelector(".sunset");
+
+    const currentDate = new Date();
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    dayAndDateSpan.textContent = `${days[currentDate.getDay()]}, ${currentDate.getDate()}/${currentDate.getMonth() + 1}`;
+
+    sunriseSpan.textContent = `↑🌅${shortenHour(processedData.sunrise)}`;
+    sunsetSpan.textContent = `↓🌅${shortenHour(processedData.sunset)}`;
+  }
+  displaySunInfo();
 }
 
 displayWeather();
