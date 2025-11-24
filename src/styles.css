@@ -33,7 +33,7 @@ button {
 
 #weathercontainer {
   background-color: red;
-  width: 800px;
+  width: 1000px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,7 +45,6 @@ button {
   background-color: azure;
   display: flex;
   gap: 10px;
-  padding: 10px;
 }
 
 .days > div {
@@ -59,4 +58,92 @@ button {
   padding: 10px;
   margin-bottom: 10px;
   background-color: antiquewhite;
+}
+
+.maindata {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 10px;
+}
+
+.leftmain {
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+}
+
+.rightmain {
+  background-color: antiquewhite;
+  overflow: hidden;
+}
+
+.hourly-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.table-wrapper {
+  display: flex;
+  overflow: hidden;
+}
+
+.row-labels {
+  min-width: 80px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  margin-right: 5px;
+  text-align: center;
+  border-radius: 8px;
+  background: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.arrow {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.hourly-container {
+  display: flex;
+  overflow: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE */
+  flex: 1;
+}
+
+.hourly-container::-webkit-scrollbar {
+  display: none;
+}
+
+.hour-box {
+  min-width: 80px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  margin-right: 5px;
+  text-align: center;
+  border-radius: 8px;
+  background: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hour {
+  font-weight: bold;
+}
+
+.temp {
+  color: #e65c00;
+}
+
+.wind {
+  color: #0077cc;
+  font-size: 0.9rem;
 }
