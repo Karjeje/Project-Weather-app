@@ -1,1 +1,3 @@
-# webpack-template
+This is a small weather app that uses the Visual Crossing API to get the weather data of a requested city. The app isn't finished.
+
+Things that still need to be done: style properly, add functionality to the days bar (display weather for upcoming days), make table with hourly weather fit whole boxes and not cut them off...
