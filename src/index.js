@@ -20,6 +20,7 @@ async function getWeather() {
     const data = await response.json();
 
     const processed = processData(data);
+    processedData = processed;
 
     localStorage.setItem("processedData", JSON.stringify(processed));
     localStorage.setItem("unprocessedData", JSON.stringify(data));
