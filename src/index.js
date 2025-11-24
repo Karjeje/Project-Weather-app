@@ -46,6 +46,7 @@ function processData(data) {
   return {
     location: data.address,
     dates: data.days,
+    currenttime: getLocalTime(data.timezone),
     description: data.currentConditions.conditions,
     temperature: data.currentConditions.temp,
     feelslike: data.currentConditions.feelslike,
@@ -114,14 +115,22 @@ function shortenHour(hour) {
   return hour.slice(0, 5);
 }
 
+function getLocalTime(timezone) {
+  return new Date().toLocaleTimeString("en-GB", {
+    timeZone: timezone,
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
 const container = document.getElementById("hourlyContainer");
 
 document.querySelector(".arrow.right").addEventListener("click", () => {
-  container.scrollBy({ left: 400, behavior: "smooth" });
+  container.scrollBy({ left: 340, behavior: "smooth" });
 });
 
 document.querySelector(".arrow.left").addEventListener("click", () => {
-  container.scrollBy({ left: -400, behavior: "smooth" });
+  container.scrollBy({ left: -340, behavior: "smooth" });
 });
 
 function displayWeather() {
@@ -162,7 +171,7 @@ function displayWeather() {
     const windSpeed = document.querySelector(".windspeed");
     const humiditySpan = document.querySelector(".humidityspan");
 
-    cityTime.textContent = `${capitalize(processedData.location)}, add time`;
+    cityTime.textContent = `${capitalize(processedData.location)}, ${processedData.currenttime}`;
     desc.textContent = processedData.description;
     secondTemp.textContent = processedData.temperature;
     windSpeed.textContent = `${processedData.windspeed} km/h`;
