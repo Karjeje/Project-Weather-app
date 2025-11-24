@@ -133,11 +133,11 @@ function getLocalTime(timezone) {
 const container = document.getElementById("hourlyContainer");
 
 document.querySelector(".arrow.right").addEventListener("click", () => {
-  container.scrollBy({ left: 340, behavior: "smooth" });
+  container.scrollBy({ left: 464, behavior: "smooth" });
 });
 
 document.querySelector(".arrow.left").addEventListener("click", () => {
-  container.scrollBy({ left: -340, behavior: "smooth" });
+  container.scrollBy({ left: -464, behavior: "smooth" });
 });
 
 //Function for displaying the weather
